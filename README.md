@@ -24,16 +24,6 @@
 - 点击源代码顶部的 `Export PDF` 即可导出 PDF 文件。
 
 
-## 效果
-
-包含照片:
-
-![](examples/resume-P1.jpg)
-
-不包含照片:
-
-![](examples/resume-P2.jpg)
-
 
 ## 示例
 
@@ -195,3 +185,11 @@
   )
 }
 ```
+
+## 效果
+
+包含照片:
+
+![](examples/resume-P3.jpg)
+
+
