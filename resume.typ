@@ -41,24 +41,24 @@
   gutterWidth: 4em,     // 头像与文本之间的间距
 )[
 
-// 姓名加大字号
-#set text(size: 15pt)
-= 空条Q太郎（Qtaro Kujo）
+  // 姓名加大字号
+  #set text(size: 15pt)
+  = 空条Q太郎（Qtaro Kujo）
 
-#info(
-  color: themeColor,
-  contact-options: (
-    gender: "男",
-    birthday: "1970-04",
-    politics: "群众",
-    birthplace: "日本东京",
-    mobile: "156XXXX1234",
-    email: link("mailto:j.kujo@example.mail")[j.kujo\@example.mail],
-    // github 与 orcid 可以取消注释并修改链接
-    //github: link("https://github.com/TimoLin")[github.com/TimoLin],
-    //orcid: link("https://orcid.org/0000-0002-xxxx-xxxx")[0000-0002-xxxx-xxxx],
-  )  
-)
+  #info(
+    color: themeColor,
+    contact-options: (
+      gender: "男",
+      birthday: "1970-04",
+      politics: "群众",
+      birthplace: "日本东京",
+      mobile: "156XXXX1234",
+      email: link("mailto:j.kujo@example.mail")[j.kujo\@example.mail],
+      // github 与 orcid 可以取消注释并修改链接
+      //github: link("https://github.com/TimoLin")[github.com/TimoLin],
+      //orcid: link("https://orcid.org/0000-0002-xxxx-xxxx")[0000-0002-xxxx-xxxx],
+    )  
+  )
 ][
   // 不需要的话可以删除
   ////#set text(size: 11pt)
@@ -70,26 +70,26 @@
 #sidebar(withLine: true, sideWidth: 18%)[
   #set text(size: 11pt)
   1996.09 - 2001.07
-  
+
   研究方向
 ][
   #set text(size: 11pt)
   // 对齐
   *东京大学*#h(1fr)生物学#h(1fr)*博士*
- 
+
   // 研究方向
   海洋生物学、动物行为学、复杂生态系统的研究
 ]
 #sidebar(withLine: true, sideWidth: 18%)[
   #set text(size: 11pt)
   1993.09 - 1996.07
-  
+
   研究方向
 ][
   #set text(size: 11pt)
   // 对齐
   *东京大学*#h(1fr)生物学#h(1fr)*硕士*
- 
+
   // 研究方向
   海洋生态系统与物种间的协同进化
 ]
@@ -97,13 +97,13 @@
 #sidebar(withLine: true, sideWidth: 18%)[
   #set text(size: 11pt)
   1989.09 - 1993.07
-  
+
   专业课程
 ][
   #set text(size: 11pt)
   // 对齐
   *东京大学*#h(1fr)生物学#h(1fr)*学士*
- 
+
   // 专业课程
   海洋生物学、生态学、遗传学、生物化学
 ]
