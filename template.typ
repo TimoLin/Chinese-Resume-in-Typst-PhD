@@ -84,14 +84,14 @@
     introduction
   } else {
     grid(
-      columns: (auto, 1fr, photographWidth),
+      columns: (photographWidth, 1fr, auto),
       gutter: (gutterWidth, 0em),
-      [#header 
-      #introduction],
       // 头像在左侧，个人信息在右侧
       if (photograph != "") {
         image(photograph, width: photographWidth)
       },
+      [#header 
+      #introduction],
     )
   }
   
