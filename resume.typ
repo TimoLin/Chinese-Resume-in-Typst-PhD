@@ -110,6 +110,7 @@
 
 == #faWork 项目经历
 
+// 请先在project.typ中编写项目经历
 // 突出展示的项目经历
 #let mainProjs = (
   "deep_sea",
