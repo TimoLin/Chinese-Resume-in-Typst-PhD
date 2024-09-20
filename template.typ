@@ -86,12 +86,12 @@
     grid(
       columns: (auto, 1fr, photographWidth),
       gutter: (gutterWidth, 0em),
-      
       [#header 
       #introduction],
+      // 头像在左侧，个人信息在右侧
       if (photograph != "") {
         image(photograph, width: photographWidth)
-      }
+      },
     )
   }
   
@@ -111,6 +111,8 @@
       set align(right)
       v(0.25em)
       side
+      // 不带竖线时，在文字后面加一个小圆点
+      if (not withLine) {"\u{25cf}"}
       v(0.25em)
     },
     if (withLine) {line(end: (0em, height), stroke: 0.05em)},
@@ -126,37 +128,75 @@
 // 个人信息
 #let info(
   color: black,
-  ..infos
+  contact-options:()
 ) = {
-    set text(font: (font.mono, font.cjk), fill: color)
-    infos.pos().map(dir => {
-      box({
-        if "icon" in dir {
-          if (type(dir.icon) == "string") {
-            icon(dir.icon)
-          } else {
-            dir.icon
-          }
-        }
-        h(0.15em)
-        if "link" in dir {
-          link(dir.link, dir.content)
-        } else {
-          dir.content
-        }
-      })
-    }).join(h(0.5em) + "·" + h(0.5em))
-    v(0.5em)
+
+  set text(size: 12pt, font: (font.mono, font.cjk), fill: color)
+  if contact-options.len() == 0 {
+    return
+  }
+
+  let contactOptionKeyToName = (
+    gender     : "性"+h(2em)+"别",
+    birthday   : "出生年月",
+    politics   : "政治面貌",
+    birthplace : "籍"+h(2em)+"贯",
+    mobile     : "电"+h(2em)+"话",
+    email      : "邮"+h(2em)+"箱",
+    github     : "GitHub  ",
+    orcid      : "ORCID   ",
+  )
+
+  // Evenly distribute the contact options among two columns.
+  let contactOptionDictPairs = contact-options.pairs()
+  let midIndex = calc.ceil(contact-options.len() / 2)
+  let firstColumnContactOptionsDictPairs = contactOptionDictPairs.slice(0, midIndex)
+  let secondColumnContactOptionsDictPairs = contactOptionDictPairs.slice(midIndex)
+
+  let renderContactOptions(contactOptionDictPairs) = [
+    #for (key, value) in contactOptionDictPairs [
+      //#infoItem(contactOptionKeyToName.at(key), value)
+      //{text(colors.text-tertiary, [contactOptionKeyToName.at(key) #value])}\
+      #contactOptionKeyToName.at(key) ： #value \
+    ]
+  ]
+
+  grid(
+    columns: (.4fr, .6fr),
+    renderContactOptions(firstColumnContactOptionsDictPairs),
+    renderContactOptions(secondColumnContactOptionsDictPairs),
+  )
 }
 
-
-// 日期： 颜色变灰
+// 日期
 #let date(body) = text(
-  fill: rgb(128, 128, 128),
+  //fill: rgb(128, 128, 128),
   size: 0.9em,
   body
 )
 
+// 格式化参与的项目
+#let itemProj(
+  color: black,
+  name,
+  source,
+  role,
+  time,
+  details,
+  showDetails: true
+) = {
+  v(0.25em)
+  set text(weight: "bold", fill: color)
+  grid(
+    columns: (50%, 1fr, auto),
+    gutter: (0em),
+    name, source +" | "+ role, date[#time]
+  )
+  set text(weight: "regular", fill: black)
+  if showDetails {
+    list(..details)
+  }
+}
 
 // 技术: 字体变细
 #let tech(body) = block({
@@ -172,7 +212,7 @@
 ) = {
   v(0.25em)
   grid(
-    columns: (30%, 1fr, auto),
+    columns: (50%, 1fr, auto),
     gutter: (0em),
     title, desc, endnote
   )

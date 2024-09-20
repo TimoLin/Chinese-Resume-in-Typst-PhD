@@ -1,2 +1,6 @@
+# Compiled files
 *.pdf
 !resume.pdf
+
+# Editor backups
+*.swp
