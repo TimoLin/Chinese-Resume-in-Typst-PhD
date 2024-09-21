@@ -10,19 +10,31 @@
 
 ## 使用
 
-### 在线编辑
+### 本地编辑
 
-可以使用 Typst 的 Web App,
-
-模板链接: https://typst.app/project/rw1SLr0IIZZnCrkrsypRQF
-
-
-### 本地编辑（推荐）
+#### [OrangeX4 的方法](https://github.com/OrangeX4/Chinese-Resume-in-Typst)
 
 - 安装 VS Code，以及 [Tinymist Typst](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist) 插件。
 - 打开 `resume.typ` 文件，按下 `Ctrl + K V` 快捷键后即可显示与编辑。
 - 点击源代码顶部的 `Export PDF` 即可导出 PDF 文件。
 
+#### Linux终端编译
+安装Typst后，使用以下命令编译：
+```bash
+typst compile resume.typ
+```
+项目文件夹下会生成`resume.pdf`文件。
+
+#### 文件说明
+
+| 文件名         | 说明          |
+| ---            | ---           |
+| `resume.typ`   | 简历主文件    |
+| `resume.pdf`   | 生成的简历PDF |
+| `projects.typ` | 项目经历库    |
+| `profile.png`  | 简历照片      |
+| `template.typ` | 模版文件      |
+| `icons`        | 图标文件夹    |
 
 
 ## 示例
